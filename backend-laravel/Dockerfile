@@ -41,6 +41,9 @@ COPY . .
 # Compilar assets
 RUN npm run build
 
+# Clear stale bootstrap cache (may reference dev-only packages)
+RUN rm -f bootstrap/cache/packages.php bootstrap/cache/services.php
+
 RUN php artisan package:discover --ansi
 
 # Permisos de storage
