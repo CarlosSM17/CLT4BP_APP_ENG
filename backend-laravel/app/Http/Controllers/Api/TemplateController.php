@@ -11,7 +11,7 @@ class TemplateController extends Controller
 {
     /**
      * GET /assessment-templates
-     * Lista todas las plantillas de evaluación disponibles
+     * List all available assessment templates
      */
     public function index(Request $request)
     {
@@ -28,12 +28,12 @@ class TemplateController extends Controller
             ->withCount('derivedAssessments as usage_count')
             ->get();
 
-        // Agregar conteo de preguntas
+        // Add question count
         $templates->each(function ($template) {
             $template->questions_count = count($template->questions ?? []);
         });
 
-        // Agrupar por tipo de evaluación
+        // Group by assessment type
         $grouped = $templates->groupBy('assessment_type')->map(function ($group) {
             return $group->values();
         });
@@ -47,20 +47,20 @@ class TemplateController extends Controller
 
     /**
      * GET /assessment-templates/{template}
-     * Muestra detalles de una plantilla específica
+     * Show details of a specific template
      */
     public function show(Request $request, Assessment $template)
     {
         if (!$template->is_template) {
             return response()->json([
-                'message' => 'No es una plantilla válida',
+                'message' => 'Not a valid template',
             ], 404);
         }
 
-        // Extraer información de dimensiones
+        // Extract dimension information
         $dimensions = $this->extractDimensions($template);
 
-        // Conteo de preguntas por tipo
+        // Question count by type
         $questionTypes = collect($template->questions ?? [])
             ->groupBy('type')
             ->map(fn($group) => $group->count());
@@ -76,32 +76,32 @@ class TemplateController extends Controller
 
     /**
      * POST /courses/{course}/assessments/from-template/{template}
-     * Crea una evaluación desde una plantilla
+     * Create an assessment from a template
      */
     public function createFromTemplate(Request $request, Course $course, Assessment $template)
     {
-        // Verificar permisos
+        // Check permissions
         if (!$this->canManageCourse($request->user(), $course)) {
             return response()->json([
-                'message' => 'No autorizado para gestionar este curso',
+                'message' => 'Unauthorized to manage this course',
             ], 403);
         }
 
-        // Verificar que sea una plantilla válida
+        // Verify it is a valid template
         if (!$template->is_template) {
             return response()->json([
-                'message' => 'No es una plantilla válida',
+                'message' => 'Not a valid template',
             ], 400);
         }
 
-        // Verificar si ya existe una evaluación de este tipo en el curso
+        // Check if an assessment of this type already exists in the course
         $existingAssessment = Assessment::where('course_id', $course->id)
             ->where('assessment_type', $template->assessment_type)
             ->first();
 
         if ($existingAssessment) {
             return response()->json([
-                'message' => 'Ya existe una evaluación de este tipo en el curso',
+                'message' => 'An assessment of this type already exists in the course',
                 'existing_assessment' => [
                     'id' => $existingAssessment->id,
                     'title' => $existingAssessment->title,
@@ -110,7 +110,7 @@ class TemplateController extends Controller
             ], 409);
         }
 
-        // Validar campos opcionales de personalización
+        // Validate optional customization fields
         $validated = $request->validate([
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
@@ -126,7 +126,7 @@ class TemplateController extends Controller
             );
 
             return response()->json([
-                'message' => 'Evaluación creada exitosamente desde plantilla',
+                'message' => 'Assessment created successfully from template',
                 'assessment' => $assessment,
                 'source_template' => [
                     'id' => $template->id,
@@ -135,7 +135,7 @@ class TemplateController extends Controller
             ], 201);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Error al crear evaluación desde plantilla',
+                'message' => 'Error creating assessment from template',
                 'error' => $e->getMessage(),
             ], 500);
         }
@@ -143,29 +143,29 @@ class TemplateController extends Controller
 
     /**
      * GET /courses/{course}/available-templates
-     * Lista plantillas disponibles para un curso (excluyendo las ya usadas)
+     * List templates available for a course (excluding already used ones)
      */
     public function availableForCourse(Request $request, Course $course)
     {
-        // Verificar permisos
+        // Check permissions
         if (!$this->canManageCourse($request->user(), $course)) {
             return response()->json([
-                'message' => 'No autorizado',
+                'message' => 'Unauthorized',
             ], 403);
         }
 
-        // Obtener tipos de evaluación ya existentes en el curso
+        // Get assessment types already existing in the course
         $existingTypes = Assessment::where('course_id', $course->id)
             ->pluck('assessment_type')
             ->toArray();
 
-        // Obtener plantillas que no han sido usadas
+        // Get templates that have not been used yet
         $availableTemplates = Assessment::templates()
             ->whereNotIn('assessment_type', $existingTypes)
             ->select(['id', 'assessment_type', 'title', 'description', 'time_limit'])
             ->get();
 
-        // Obtener plantillas ya usadas (para referencia)
+        // Get already used templates (for reference)
         $usedTemplates = Assessment::templates()
             ->whereIn('assessment_type', $existingTypes)
             ->select(['id', 'assessment_type', 'title'])
@@ -182,7 +182,7 @@ class TemplateController extends Controller
     }
 
     /**
-     * Extrae información de dimensiones de las preguntas de la plantilla
+     * Extract dimension information from the template questions
      */
     private function extractDimensions(Assessment $template): array
     {
@@ -208,7 +208,7 @@ class TemplateController extends Controller
     }
 
     /**
-     * Verifica si el usuario puede gestionar el curso
+     * Check if the user can manage the course
      */
     private function canManageCourse($user, Course $course): bool
     {

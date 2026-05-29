@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 class AssessmentController extends Controller
 {
     /**
-     * Listar evaluaciones de un curso
+     * List assessments for a course
      */
     public function index(Request $request, Course $course)
     {
-        // Verificar permisos de acceso al curso
+        // Check course access permissions
         if (!$this->canAccessCourse($request->user(), $course)) {
             return response()->json([
-                'message' => 'No autorizado para ver este curso',
+                'message' => 'Unauthorized to view this course',
             ], 403);
         }
 
@@ -28,14 +28,14 @@ class AssessmentController extends Controller
                 }
             }]);
 
-        // Los estudiantes solo ven evaluaciones activas
+        // Students only see active assessments
         if ($request->user()->isStudent()) {
             $assessmentsQuery->where('is_active', true);
         }
 
         $assessments = $assessmentsQuery->get();
 
-        // Agregar información de completitud para cada evaluación
+        // Add completion info for each assessment
         $assessments->each(function ($assessment) use ($request) {
             if ($request->user()->isStudent()) {
                 $assessment->is_completed = $assessment->isCompleted($request->user()->id);
@@ -50,13 +50,13 @@ class AssessmentController extends Controller
     }
 
     /**
-     * Crear evaluación
+     * Create assessment
      */
     public function store(Request $request, Course $course)
     {
-        // Verificar permisos
+        // Check permissions
         if (!$request->user()->isInstructor() && !$request->user()->isAdmin()) {
-            return response()->json(['message' => 'No autorizado'], 403);
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
 
         $validated = $request->validate([
@@ -78,38 +78,38 @@ class AssessmentController extends Controller
         $assessment = Assessment::create($validated);
 
         return response()->json([
-            'message' => 'Evaluación creada exitosamente',
+            'message' => 'Assessment created successfully',
             'assessment' => $assessment,
         ], 201);
     }
 
     /**
-     * Ver evaluación específica
+     * View specific assessment
      */
     public function show(Request $request, Course $course, Assessment $assessment)
     {
-        // Verificar que la evaluación pertenece al curso
+        // Verify the assessment belongs to the course
         if ($assessment->course_id !== $course->id) {
-            return response()->json(['message' => 'Evaluación no encontrada'], 404);
+            return response()->json(['message' => 'Assessment not found'], 404);
         }
 
-        // Verificar permisos de acceso al curso
+        // Check course access permissions
         if (!$this->canAccessCourse($request->user(), $course)) {
             return response()->json([
-                'message' => 'No autorizado para ver este curso',
+                'message' => 'Unauthorized to view this course',
             ], 403);
         }
 
-        // Si es estudiante y la evaluación no está activa, no puede verla
+        // Students cannot view inactive assessments
         if ($request->user()->isStudent() && !$assessment->is_active) {
             return response()->json([
-                'message' => 'Esta evaluación no está disponible',
+                'message' => 'This assessment is not available',
             ], 403);
         }
 
         $assessment->load('responses');
 
-        // Si es estudiante, agregar su respuesta
+        // Add the student's own response if applicable
         if ($request->user()->isStudent()) {
             $assessment->is_completed = $assessment->isCompleted($request->user()->id);
             $assessment->user_response = $assessment->getResponse($request->user()->id);
@@ -121,18 +121,18 @@ class AssessmentController extends Controller
     }
 
     /**
-     * Actualizar evaluación
+     * Update assessment
      */
     public function update(Request $request, Course $course, Assessment $assessment)
     {
-        // Verificar permisos
+        // Check permissions
         if (!$request->user()->isInstructor() && !$request->user()->isAdmin()) {
-            return response()->json(['message' => 'No autorizado'], 403);
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
 
-        // Verificar que la evaluación pertenece al curso
+        // Verify the assessment belongs to the course
         if ($assessment->course_id !== $course->id) {
-            return response()->json(['message' => 'Evaluación no encontrada'], 404);
+            return response()->json(['message' => 'Assessment not found'], 404);
         }
 
         $validated = $request->validate([
@@ -147,41 +147,41 @@ class AssessmentController extends Controller
         $assessment->update($validated);
 
         return response()->json([
-            'message' => 'Evaluación actualizada exitosamente',
+            'message' => 'Assessment updated successfully',
             'assessment' => $assessment,
         ]);
     }
 
     /**
-     * Eliminar evaluación
+     * Delete assessment
      */
     public function destroy(Request $request, Course $course, Assessment $assessment)
     {
-        // Verificar permisos
+        // Check permissions
         if (!$request->user()->isInstructor() && !$request->user()->isAdmin()) {
-            return response()->json(['message' => 'No autorizado'], 403);
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
 
-        // Verificar que la evaluación pertenece al curso
+        // Verify the assessment belongs to the course
         if ($assessment->course_id !== $course->id) {
-            return response()->json(['message' => 'Evaluación no encontrada'], 404);
+            return response()->json(['message' => 'Assessment not found'], 404);
         }
 
         $assessment->delete();
 
         return response()->json([
-            'message' => 'Evaluación eliminada exitosamente',
+            'message' => 'Assessment deleted successfully',
         ]);
     }
 
     /**
-     * Activar/Desactivar evaluación
+     * Activate/Deactivate assessment
      */
     public function toggleActive(Request $request, Course $course, Assessment $assessment)
     {
-        // Verificar permisos
+        // Check permissions
         if (!$request->user()->isInstructor() && !$request->user()->isAdmin()) {
-            return response()->json(['message' => 'No autorizado'], 403);
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
 
         $assessment->update([
@@ -189,13 +189,13 @@ class AssessmentController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Estado actualizado',
+            'message' => 'Status updated',
             'assessment' => $assessment,
         ]);
     }
 
     /**
-     * Verificar si el usuario puede acceder al curso
+     * Check if the user can access the course
      */
     private function canAccessCourse($user, $course): bool
     {
@@ -208,7 +208,7 @@ class AssessmentController extends Controller
         }
 
         if ($user->isStudent()) {
-            // Verificar si el estudiante está inscrito en el curso
+            // Verify the student is enrolled in the course
             return $course->enrollments()
                 ->where('student_id', $user->id)
                 ->where('status', 'enrolled')
