@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos personalizados */
+@layer base {
+  body {
+    @apply bg-base-100;
+  }
+}
+
+@layer components {
+  /* ELIMINADO: .btn-primary ya existe en DaisyUI, no necesitas definirlo */
+
+  /* Cambiamos el nombre para que no choque o lo definimos como componente propio */
+  .custom-input {
+    @apply input input-bordered w-full;
+  }
+
+  .custom-card {
+    @apply card bg-base-100 shadow-xl;
+  }
+}
