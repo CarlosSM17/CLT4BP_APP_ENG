@@ -8,232 +8,232 @@ use Illuminate\Database\Seeder;
 class MslqQuestionnaireSeeder extends Seeder
 {
     /**
-     * Opciones de escala Likert 1-7 para MSLQ
+     * Likert 1-7 scale options for MSLQ
      */
     private const LIKERT_OPTIONS = [
-        ['value' => 1, 'label' => 'No me describe en absoluto'],
-        ['value' => 2, 'label' => 'Me describe muy poco'],
-        ['value' => 3, 'label' => 'Me describe poco'],
-        ['value' => 4, 'label' => 'Ni me describe ni deja de describirme'],
-        ['value' => 5, 'label' => 'Me describe moderadamente'],
-        ['value' => 6, 'label' => 'Me describe mucho'],
-        ['value' => 7, 'label' => 'Me describe totalmente'],
+        ['value' => 1, 'label' => 'Not at all true of me'],
+        ['value' => 2, 'label' => 'Slightly true of me'],
+        ['value' => 3, 'label' => 'Somewhat true of me'],
+        ['value' => 4, 'label' => 'Neither true nor untrue of me'],
+        ['value' => 5, 'label' => 'Moderately true of me'],
+        ['value' => 6, 'label' => 'Very true of me'],
+        ['value' => 7, 'label' => 'Completely true of me'],
     ];
 
     /**
-     * Preguntas de Motivación (Items 1-31)
-     * Basado en Pintrich et al. (1991) - MSLQ Manual
+     * Motivation Questions (Items 1-31)
+     * Based on Pintrich et al. (1991) - MSLQ Manual
      */
     private const MOTIVATION_QUESTIONS = [
-        // Orientación a Metas Intrínsecas (items 1, 16, 22, 24)
+        // Intrinsic Goal Orientation (items 1, 16, 22, 24)
         ['id' => '1', 'item_number' => 1, 'dimension' => 'intrinsic_goal_orientation',
-         'question' => 'En una clase como esta, prefiero materiales de curso que realmente me desafíen para poder aprender cosas nuevas.'],
+         'question' => 'In a class like this, I prefer course material that really challenges me so I can learn new things.'],
         ['id' => '16', 'item_number' => 16, 'dimension' => 'intrinsic_goal_orientation',
-         'question' => 'En una clase como esta, prefiero materiales de curso que despierten mi curiosidad, aunque sean difíciles de aprender.'],
+         'question' => 'In a class like this, I prefer course material that arouses my curiosity, even if it is difficult to learn.'],
         ['id' => '22', 'item_number' => 22, 'dimension' => 'intrinsic_goal_orientation',
-         'question' => 'Lo más satisfactorio para mí en este curso es tratar de entender el contenido lo más profundamente posible.'],
+         'question' => 'The most satisfying thing for me in this course is trying to understand the content as thoroughly as possible.'],
         ['id' => '24', 'item_number' => 24, 'dimension' => 'intrinsic_goal_orientation',
-         'question' => 'Cuando tengo la oportunidad en esta clase, elijo tareas de las que pueda aprender aunque no me garanticen una buena calificación.'],
+         'question' => 'When I have the opportunity in this class, I choose course assignments that I can learn from even if they don\'t guarantee a good grade.'],
 
-        // Orientación a Metas Extrínsecas (items 7, 11, 13, 30)
+        // Extrinsic Goal Orientation (items 7, 11, 13, 30)
         ['id' => '7', 'item_number' => 7, 'dimension' => 'extrinsic_goal_orientation',
-         'question' => 'Obtener una buena calificación en esta clase es lo más satisfactorio para mí en este momento.'],
+         'question' => 'Getting a good grade in this class is the most satisfying thing for me right now.'],
         ['id' => '11', 'item_number' => 11, 'dimension' => 'extrinsic_goal_orientation',
-         'question' => 'Lo más importante para mí ahora mismo es mejorar mi promedio general, por lo que mi principal preocupación en esta clase es obtener una buena calificación.'],
+         'question' => 'The most important thing for me right now is improving my overall grade point average, so my main concern in this class is getting a good grade.'],
         ['id' => '13', 'item_number' => 13, 'dimension' => 'extrinsic_goal_orientation',
-         'question' => 'Si puedo, quiero obtener mejores calificaciones en esta clase que la mayoría de los otros estudiantes.'],
+         'question' => 'If I can, I want to get better grades in this class than most of the other students.'],
         ['id' => '30', 'item_number' => 30, 'dimension' => 'extrinsic_goal_orientation',
-         'question' => 'Quiero tener un buen desempeño en esta clase porque es importante demostrar mi habilidad a mi familia, amigos, empleador u otros.'],
+         'question' => 'I want to do well in this class because it is important to show my ability to my family, friends, employer, or others.'],
 
-        // Valor de la Tarea (items 4, 10, 17, 23, 26, 27)
+        // Task Value (items 4, 10, 17, 23, 26, 27)
         ['id' => '4', 'item_number' => 4, 'dimension' => 'task_value',
-         'question' => 'Pienso que podré usar lo que aprenda en este curso en otros cursos.'],
+         'question' => 'I think I will be able to use what I learn in this course in other courses.'],
         ['id' => '10', 'item_number' => 10, 'dimension' => 'task_value',
-         'question' => 'Es importante para mí aprender el material de este curso.'],
+         'question' => 'It is important for me to learn the course material in this class.'],
         ['id' => '17', 'item_number' => 17, 'dimension' => 'task_value',
-         'question' => 'Estoy muy interesado(a) en el contenido de este curso.'],
+         'question' => 'I am very interested in the content area of this course.'],
         ['id' => '23', 'item_number' => 23, 'dimension' => 'task_value',
-         'question' => 'Pienso que el material de este curso es útil para que yo lo aprenda.'],
+         'question' => 'I think the course material in this class is useful for me to learn.'],
         ['id' => '26', 'item_number' => 26, 'dimension' => 'task_value',
-         'question' => 'Me gusta el tema de este curso.'],
+         'question' => 'I like the subject matter of this course.'],
         ['id' => '27', 'item_number' => 27, 'dimension' => 'task_value',
-         'question' => 'Entender el tema de este curso es muy importante para mí.'],
+         'question' => 'Understanding the subject matter of this course is very important to me.'],
 
-        // Creencias de Control (items 2, 9, 18, 25)
+        // Control Beliefs (items 2, 9, 18, 25)
         ['id' => '2', 'item_number' => 2, 'dimension' => 'control_beliefs',
-         'question' => 'Si estudio de manera apropiada, podré aprender el material de este curso.'],
+         'question' => 'If I study in appropriate ways, then I will be able to learn the material in this course.'],
         ['id' => '9', 'item_number' => 9, 'dimension' => 'control_beliefs',
-         'question' => 'Es mi culpa si no aprendo el material de este curso.'],
+         'question' => 'It is my own fault if I don\'t learn the material in this course.'],
         ['id' => '18', 'item_number' => 18, 'dimension' => 'control_beliefs',
-         'question' => 'Si me esfuerzo lo suficiente, entenderé el material del curso.'],
+         'question' => 'If I try hard enough, then I will understand the course material.'],
         ['id' => '25', 'item_number' => 25, 'dimension' => 'control_beliefs',
-         'question' => 'Si no entiendo el material del curso, es porque no me esforcé lo suficiente.'],
+         'question' => 'If I don\'t understand the course material, it is because I didn\'t try hard enough.'],
 
-        // Autoeficacia para el Aprendizaje y el Desempeño (items 5, 6, 12, 15, 20, 21, 29, 31)
+        // Self-Efficacy for Learning and Performance (items 5, 6, 12, 15, 20, 21, 29, 31)
         ['id' => '5', 'item_number' => 5, 'dimension' => 'self_efficacy',
-         'question' => 'Creo que recibiré una excelente calificación en esta clase.'],
+         'question' => 'I believe I will receive an excellent grade in this class.'],
         ['id' => '6', 'item_number' => 6, 'dimension' => 'self_efficacy',
-         'question' => 'Estoy seguro(a) de que puedo entender las lecturas más difíciles de este curso.'],
+         'question' => 'I\'m confident I can understand the most difficult material presented in the readings for this course.'],
         ['id' => '12', 'item_number' => 12, 'dimension' => 'self_efficacy',
-         'question' => 'Confío en que puedo aprender los conceptos básicos enseñados en este curso.'],
+         'question' => 'I\'m confident I can learn the basic concepts taught in this course.'],
         ['id' => '15', 'item_number' => 15, 'dimension' => 'self_efficacy',
-         'question' => 'Confío en que puedo entender el material más complejo presentado por el instructor en este curso.'],
+         'question' => 'I\'m confident I can understand the most complex material presented by the instructor in this course.'],
         ['id' => '20', 'item_number' => 20, 'dimension' => 'self_efficacy',
-         'question' => 'Confío en que puedo hacer un excelente trabajo en las tareas y exámenes de este curso.'],
+         'question' => 'I\'m confident I can do an excellent job on the assignments and tests in this course.'],
         ['id' => '21', 'item_number' => 21, 'dimension' => 'self_efficacy',
-         'question' => 'Espero tener un buen desempeño en esta clase.'],
+         'question' => 'I expect to do well in this class.'],
         ['id' => '29', 'item_number' => 29, 'dimension' => 'self_efficacy',
-         'question' => 'Estoy seguro(a) de que puedo dominar las habilidades que se enseñan en esta clase.'],
+         'question' => 'I\'m certain I can master the skills being taught in this class.'],
         ['id' => '31', 'item_number' => 31, 'dimension' => 'self_efficacy',
-         'question' => 'Considerando la dificultad de este curso, el profesor y mis habilidades, creo que me irá bien en esta clase.'],
+         'question' => 'Considering the difficulty of this course, the teacher, and my skills, I think I will do well in this class.'],
 
-        // Ansiedad ante Exámenes (items 3, 8, 14, 19, 28)
+        // Test Anxiety (items 3, 8, 14, 19, 28)
         ['id' => '3', 'item_number' => 3, 'dimension' => 'test_anxiety',
-         'question' => 'Cuando presento un examen, pienso en lo mal que lo estoy haciendo comparado con otros estudiantes.'],
+         'question' => 'When I take a test I think about how poorly I am doing compared with other students.'],
         ['id' => '8', 'item_number' => 8, 'dimension' => 'test_anxiety',
-         'question' => 'Cuando presento un examen, pienso en las preguntas de otras partes del examen que no puedo contestar.'],
+         'question' => 'When I take an exam I think about items on other parts of the exam I can\'t answer.'],
         ['id' => '14', 'item_number' => 14, 'dimension' => 'test_anxiety',
-         'question' => 'Cuando presento exámenes, pienso en las consecuencias de reprobar.'],
+         'question' => 'When I take tests I think of the consequences of failing.'],
         ['id' => '19', 'item_number' => 19, 'dimension' => 'test_anxiety',
-         'question' => 'Tengo una sensación de inquietud y malestar cuando presento un examen.'],
+         'question' => 'I have an uneasy, upset feeling when I take an exam.'],
         ['id' => '28', 'item_number' => 28, 'dimension' => 'test_anxiety',
-         'question' => 'Siento que mi corazón late rápido cuando presento un examen.'],
+         'question' => 'I feel my heart beating fast when I take an exam.'],
     ];
 
     /**
-     * Preguntas de Estrategias de Aprendizaje (Items 32-81)
+     * Learning Strategies Questions (Items 32-81)
      */
     private const STRATEGIES_QUESTIONS = [
-        // Organización (items 32, 42, 49, 63)
+        // Organization (items 32, 42, 49, 63)
         ['id' => '32', 'item_number' => 32, 'dimension' => 'organization',
-         'question' => 'Cuando estudio las lecturas de este curso, subrayo el material para ayudarme a organizar mis pensamientos.'],
+         'question' => 'When I study the readings for this course, I outline the material to help me organize my thoughts.'],
         ['id' => '42', 'item_number' => 42, 'dimension' => 'organization',
-         'question' => 'Cuando estudio para este curso, reviso mis notas de clase y hago un esquema de los conceptos importantes.'],
+         'question' => 'When I study for this course, I go over my class notes and make an outline of important concepts.'],
         ['id' => '49', 'item_number' => 49, 'dimension' => 'organization',
-         'question' => 'Hago diagramas, gráficos o tablas simples para ayudarme a organizar el material del curso.'],
+         'question' => 'I make simple charts, diagrams, or tables to help me organize course material.'],
         ['id' => '63', 'item_number' => 63, 'dimension' => 'organization',
-         'question' => 'Cuando estudio para este curso, reviso las lecturas y mis notas e intento encontrar las ideas más importantes.'],
+         'question' => 'When I study for this course, I go over the readings and my class notes and try to find the most important ideas.'],
 
-        // Autorregulación Metacognitiva (items 33, 36, 41, 44, 54, 55, 56, 57, 61, 76, 78, 79)
+        // Metacognitive Self-Regulation (items 33, 36, 41, 44, 54, 55, 56, 57, 61, 76, 78, 79)
         ['id' => '33', 'item_number' => 33, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Durante la clase frecuentemente me pierdo información importante porque estoy pensando en otras cosas.'],
+         'question' => 'During class time I often miss important points because I\'m thinking of other things.'],
         ['id' => '36', 'item_number' => 36, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Cuando leo para este curso, me hago preguntas para ayudarme a concentrar mi lectura.'],
+         'question' => 'When reading for this class, I make up questions to help focus my reading.'],
         ['id' => '41', 'item_number' => 41, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Cuando me confundo sobre algo que estoy leyendo para esta clase, vuelvo atrás y trato de entenderlo.'],
+         'question' => 'When I become confused about something I\'m reading for this class, I go back and try to figure it out.'],
         ['id' => '44', 'item_number' => 44, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Si los materiales del curso son difíciles de entender, cambio la forma en que leo el material.'],
+         'question' => 'If course materials are difficult to understand, I change the way I read the material.'],
         ['id' => '54', 'item_number' => 54, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Antes de estudiar nuevo material del curso a fondo, frecuentemente lo hojeo para ver cómo está organizado.'],
+         'question' => 'Before I study new course material thoroughly, I often skim it to see how it is organized.'],
         ['id' => '55', 'item_number' => 55, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Me hago preguntas para asegurarme de entender el material que he estado estudiando en esta clase.'],
+         'question' => 'I ask myself questions to make sure I understand the material I have been studying in this class.'],
         ['id' => '56', 'item_number' => 56, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Trato de cambiar la forma en que estudio para ajustarme a los requisitos del curso y al estilo de enseñanza del instructor.'],
+         'question' => 'I try to change the way I study in order to fit the course requirements and the instructor\'s teaching style.'],
         ['id' => '57', 'item_number' => 57, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Frecuentemente me doy cuenta de que he estado leyendo para la clase pero no sé de qué se trataba.'],
+         'question' => 'I often find that I have been reading for this class but don\'t know what it was all about.'],
         ['id' => '61', 'item_number' => 61, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Trato de pensar en un tema y decidir qué se supone que debo aprender de él en lugar de solo leerlo cuando estudio para el curso.'],
+         'question' => 'I try to think through a topic and decide what I am supposed to learn from it rather than just reading it over when I study for this class.'],
         ['id' => '76', 'item_number' => 76, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Cuando estudio para esta clase, establezco metas para dirigir mis actividades en cada período de estudio.'],
+         'question' => 'When studying for this class, I set goals for myself in order to direct my activities in each study period.'],
         ['id' => '78', 'item_number' => 78, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Cuando estudio para esta clase, frecuentemente trato de explicar el material a un compañero o amigo.'],
+         'question' => 'When studying for this class, I often try to explain the material to a classmate or friend.'],
         ['id' => '79', 'item_number' => 79, 'dimension' => 'metacognitive_self_regulation',
-         'question' => 'Usualmente estudio en un lugar donde pueda concentrarme en mi trabajo del curso.'],
+         'question' => 'I usually study in a place where I can concentrate on my course work.'],
 
-        // Aprendizaje entre Pares (items 34, 45, 50)
+        // Peer Learning (items 34, 45, 50)
         ['id' => '34', 'item_number' => 34, 'dimension' => 'peer_learning',
-         'question' => 'Cuando estudio para este curso, frecuentemente trato de explicar el material a un compañero de clase o amigo.'],
+         'question' => 'When studying for this course, I often try to explain the material to a classmate or friend.'],
         ['id' => '45', 'item_number' => 45, 'dimension' => 'peer_learning',
-         'question' => 'Trato de trabajar con otros estudiantes de esta clase para completar las tareas del curso.'],
+         'question' => 'I try to work with other students from this class to complete the course assignments.'],
         ['id' => '50', 'item_number' => 50, 'dimension' => 'peer_learning',
-         'question' => 'Cuando estudio para este curso, frecuentemente reservo tiempo para discutir el material del curso con un grupo de estudiantes de la clase.'],
+         'question' => 'When studying for this course, I often set aside time to discuss course material with a group of students from the class.'],
 
-        // Administración del Tiempo y Ambiente de Estudio (items 35, 43, 52, 65, 70, 73, 77, 80)
+        // Time and Study Environment Management (items 35, 43, 52, 65, 70, 73, 77, 80)
         ['id' => '35', 'item_number' => 35, 'dimension' => 'time_management',
-         'question' => 'Usualmente estudio en un lugar donde pueda concentrarme en mi trabajo del curso.'],
+         'question' => 'I usually study in a place where I can concentrate on my course work.'],
         ['id' => '43', 'item_number' => 43, 'dimension' => 'time_management',
-         'question' => 'Hago buen uso de mi tiempo de estudio para este curso.'],
+         'question' => 'I make good use of my study time for this course.'],
         ['id' => '52', 'item_number' => 52, 'dimension' => 'time_management',
-         'question' => 'Me resulta difícil mantener un horario de estudio.'],
+         'question' => 'I find it hard to stick to a study schedule.'],
         ['id' => '65', 'item_number' => 65, 'dimension' => 'time_management',
-         'question' => 'Tengo un lugar regular para estudiar.'],
+         'question' => 'I have a regular place set aside for studying.'],
         ['id' => '70', 'item_number' => 70, 'dimension' => 'time_management',
-         'question' => 'Me aseguro de estar al día con las lecturas y tareas semanales de este curso.'],
+         'question' => 'I make sure that I keep up with the weekly readings and assignments for this course.'],
         ['id' => '73', 'item_number' => 73, 'dimension' => 'time_management',
-         'question' => 'Asisto a clase regularmente.'],
+         'question' => 'I attend class regularly.'],
         ['id' => '77', 'item_number' => 77, 'dimension' => 'time_management',
-         'question' => 'Frecuentemente me doy cuenta de que no dedico mucho tiempo a este curso debido a otras actividades.'],
+         'question' => 'I often find that I don\'t spend very much time on this course because of other activities.'],
         ['id' => '80', 'item_number' => 80, 'dimension' => 'time_management',
-         'question' => 'Raramente encuentro tiempo para revisar mis notas o lecturas antes de un examen.'],
+         'question' => 'I rarely find time to review my notes or the assigned readings before an exam.'],
 
-        // Regulación del Esfuerzo (items 37, 48, 60, 74)
+        // Effort Regulation (items 37, 48, 60, 74)
         ['id' => '37', 'item_number' => 37, 'dimension' => 'effort_regulation',
-         'question' => 'Frecuentemente me siento tan perezoso(a) o aburrido(a) cuando estudio para esta clase que abandono antes de terminar lo que planeaba hacer.'],
+         'question' => 'I often feel so lazy or bored when I study for this class that I quit before I finish what I planned to do.'],
         ['id' => '48', 'item_number' => 48, 'dimension' => 'effort_regulation',
-         'question' => 'Trabajo duro para tener un buen desempeño en esta clase incluso si no me gusta lo que estamos haciendo.'],
+         'question' => 'I work hard to do well in this class even if I don\'t like what we are doing.'],
         ['id' => '60', 'item_number' => 60, 'dimension' => 'effort_regulation',
-         'question' => 'Cuando el trabajo del curso es difícil, me rindo o solo estudio las partes fáciles.'],
+         'question' => 'When course work is difficult, I give up or only study the easy parts.'],
         ['id' => '74', 'item_number' => 74, 'dimension' => 'effort_regulation',
-         'question' => 'Incluso cuando los materiales del curso son aburridos y poco interesantes, logro seguir trabajando hasta terminar.'],
+         'question' => 'Even when course materials are dull and uninteresting, I manage to keep working until I finish.'],
 
-        // Pensamiento Crítico (items 38, 47, 51, 66, 71)
+        // Critical Thinking (items 38, 47, 51, 66, 71)
         ['id' => '38', 'item_number' => 38, 'dimension' => 'critical_thinking',
-         'question' => 'Frecuentemente me encuentro cuestionando las cosas que escucho o leo en este curso para decidir si las encuentro convincentes.'],
+         'question' => 'I often find myself questioning things I hear or read in this course to decide if I find them convincing.'],
         ['id' => '47', 'item_number' => 47, 'dimension' => 'critical_thinking',
-         'question' => 'Cuando se presenta una teoría, interpretación o conclusión en clase o en las lecturas, trato de decidir si hay buena evidencia que la respalde.'],
+         'question' => 'When a theory, interpretation, or conclusion is presented in class or in the readings, I try to decide if there is good evidence to support it.'],
         ['id' => '51', 'item_number' => 51, 'dimension' => 'critical_thinking',
-         'question' => 'Trato el material del curso como un punto de partida y trato de desarrollar mis propias ideas sobre él.'],
+         'question' => 'I treat the course material as a starting point and try to develop my own ideas about it.'],
         ['id' => '66', 'item_number' => 66, 'dimension' => 'critical_thinking',
-         'question' => 'Trato de jugar con ideas propias relacionadas con lo que estoy aprendiendo en este curso.'],
+         'question' => 'I try to play around with ideas of my own related to what I am learning in this course.'],
         ['id' => '71', 'item_number' => 71, 'dimension' => 'critical_thinking',
-         'question' => 'Siempre que leo o escucho una afirmación o conclusión en esta clase, pienso en posibles alternativas.'],
+         'question' => 'Whenever I read or hear an assertion or conclusion in this class, I think about possible alternatives.'],
 
-        // Repetición/Ensayo (items 39, 46, 59, 72)
+        // Rehearsal (items 39, 46, 59, 72)
         ['id' => '39', 'item_number' => 39, 'dimension' => 'rehearsal',
-         'question' => 'Cuando estudio para esta clase, practico diciendo el material para mí mismo(a) una y otra vez.'],
+         'question' => 'When I study for this class, I practice saying the material to myself over and over.'],
         ['id' => '46', 'item_number' => 46, 'dimension' => 'rehearsal',
-         'question' => 'Cuando estudio para esta clase, leo mis notas de clase y las lecturas del curso una y otra vez.'],
+         'question' => 'When studying for this class, I read my class notes and the course readings over and over again.'],
         ['id' => '59', 'item_number' => 59, 'dimension' => 'rehearsal',
-         'question' => 'Memorizo palabras clave para recordar conceptos importantes en esta clase.'],
+         'question' => 'I memorize key words to remind me of important concepts in this class.'],
         ['id' => '72', 'item_number' => 72, 'dimension' => 'rehearsal',
-         'question' => 'Hago listas de términos importantes para este curso y los memorizo.'],
+         'question' => 'I make lists of important terms for this course and memorize the lists.'],
 
-        // Búsqueda de Ayuda (items 40, 58, 68, 75)
+        // Help Seeking (items 40, 58, 68, 75)
         ['id' => '40', 'item_number' => 40, 'dimension' => 'help_seeking',
-         'question' => 'Aunque tenga problemas aprendiendo el material en esta clase, trato de hacerlo solo(a), sin la ayuda de nadie.'],
+         'question' => 'Even if I have trouble learning the material in this class, I try to do the work on my own, without help from anyone.'],
         ['id' => '58', 'item_number' => 58, 'dimension' => 'help_seeking',
-         'question' => 'Pido al instructor que clarifique conceptos que no entiendo bien.'],
+         'question' => 'I ask the instructor to clarify concepts I don\'t understand well.'],
         ['id' => '68', 'item_number' => 68, 'dimension' => 'help_seeking',
-         'question' => 'Cuando no puedo entender el material de este curso, pido ayuda a otro estudiante de la clase.'],
+         'question' => 'When I can\'t understand the material in this course, I ask another student in this class for help.'],
         ['id' => '75', 'item_number' => 75, 'dimension' => 'help_seeking',
-         'question' => 'Trato de identificar estudiantes en esta clase a quienes pueda pedir ayuda si es necesario.'],
+         'question' => 'I try to identify students in this class whom I can ask for help if necessary.'],
 
-        // Elaboración (items 53, 62, 64, 67, 69, 81)
+        // Elaboration (items 53, 62, 64, 67, 69, 81)
         ['id' => '53', 'item_number' => 53, 'dimension' => 'elaboration',
-         'question' => 'Cuando estudio para esta clase, junto información de diferentes fuentes, como lecturas, discusiones y notas.'],
+         'question' => 'When studying for this class, I pull together information from different sources, such as lectures, readings, and discussions.'],
         ['id' => '62', 'item_number' => 62, 'dimension' => 'elaboration',
-         'question' => 'Trato de relacionar las ideas de este curso con las de otros cursos siempre que sea posible.'],
+         'question' => 'I try to relate ideas in this subject to those in other courses whenever possible.'],
         ['id' => '64', 'item_number' => 64, 'dimension' => 'elaboration',
-         'question' => 'Cuando leo para esta clase, trato de relacionar el material con lo que ya sé.'],
+         'question' => 'When I read material for this class, I try to relate it to what I already know.'],
         ['id' => '67', 'item_number' => 67, 'dimension' => 'elaboration',
-         'question' => 'Cuando estudio para esta clase, escribo breves resúmenes de las ideas principales de las lecturas y mis notas de clase.'],
+         'question' => 'When studying for this class, I write brief summaries of the main ideas from the readings and my class notes.'],
         ['id' => '69', 'item_number' => 69, 'dimension' => 'elaboration',
-         'question' => 'Trato de entender el material de esta clase haciendo conexiones entre las lecturas y los conceptos de las conferencias.'],
+         'question' => 'I try to understand the material in this class by making connections between the readings and the concepts from the lectures.'],
         ['id' => '81', 'item_number' => 81, 'dimension' => 'elaboration',
-         'question' => 'Trato de aplicar las ideas de las lecturas del curso a otras actividades de clase como discusiones y conferencias.'],
+         'question' => 'I try to apply ideas from course readings in other class activities such as lecture and discussion.'],
     ];
 
     public function run(): void
     {
-        // Crear plantilla MSLQ Motivación
+        // Create MSLQ Motivation template
         $this->createMotivationTemplate();
 
-        // Crear plantilla MSLQ Estrategias
+        // Create MSLQ Strategies template
         $this->createStrategiesTemplate();
 
-        $this->command->info('Plantillas MSLQ creadas exitosamente:');
-        $this->command->info('- MSLQ Motivación (31 items)');
-        $this->command->info('- MSLQ Estrategias de Aprendizaje (50 items)');
+        $this->command->info('MSLQ templates created successfully:');
+        $this->command->info('- MSLQ Motivation (31 items)');
+        $this->command->info('- MSLQ Learning Strategies (50 items)');
     }
 
     private function createMotivationTemplate(): void
@@ -256,24 +256,24 @@ class MslqQuestionnaireSeeder extends Seeder
             ],
             [
                 'course_id' => null,
-                'title' => 'MSLQ - Escalas de Motivación',
-                'description' => 'Cuestionario de Estrategias Motivadas para el Aprendizaje (MSLQ) - Sección de Motivación. Desarrollado por Pintrich et al. (1991). Incluye 31 ítems que miden: orientación a metas intrínsecas y extrínsecas, valor de la tarea, creencias de control, autoeficacia y ansiedad ante exámenes.',
+                'title' => 'MSLQ - Motivation Scales',
+                'description' => 'Motivated Strategies for Learning Questionnaire (MSLQ) - Motivation Section. Developed by Pintrich et al. (1991). Includes 31 items measuring: intrinsic and extrinsic goal orientation, task value, control beliefs, self-efficacy, and test anxiety.',
                 'questions' => $questions,
                 'config' => [
                     'version' => '1.0',
                     'source' => 'Pintrich, P. R., Smith, D. A., Garcia, T., & McKeachie, W. J. (1991)',
                     'scale_type' => 'likert_7',
                     'scale_anchors' => [
-                        'min' => 'No me describe en absoluto',
-                        'max' => 'Me describe totalmente',
+                        'min' => 'Not at all true of me',
+                        'max' => 'Completely true of me',
                     ],
                     'dimensions' => [
-                        'intrinsic_goal_orientation' => ['items' => [1, 16, 22, 24], 'label' => 'Orientación a Metas Intrínsecas'],
-                        'extrinsic_goal_orientation' => ['items' => [7, 11, 13, 30], 'label' => 'Orientación a Metas Extrínsecas'],
-                        'task_value' => ['items' => [4, 10, 17, 23, 26, 27], 'label' => 'Valor de la Tarea'],
-                        'control_beliefs' => ['items' => [2, 9, 18, 25], 'label' => 'Creencias de Control'],
-                        'self_efficacy' => ['items' => [5, 6, 12, 15, 20, 21, 29, 31], 'label' => 'Autoeficacia'],
-                        'test_anxiety' => ['items' => [3, 8, 14, 19, 28], 'label' => 'Ansiedad ante Exámenes'],
+                        'intrinsic_goal_orientation' => ['items' => [1, 16, 22, 24], 'label' => 'Intrinsic Goal Orientation'],
+                        'extrinsic_goal_orientation' => ['items' => [7, 11, 13, 30], 'label' => 'Extrinsic Goal Orientation'],
+                        'task_value' => ['items' => [4, 10, 17, 23, 26, 27], 'label' => 'Task Value'],
+                        'control_beliefs' => ['items' => [2, 9, 18, 25], 'label' => 'Control Beliefs'],
+                        'self_efficacy' => ['items' => [5, 6, 12, 15, 20, 21, 29, 31], 'label' => 'Self-Efficacy'],
+                        'test_anxiety' => ['items' => [3, 8, 14, 19, 28], 'label' => 'Test Anxiety'],
                     ],
                 ],
                 'is_active' => false,
@@ -304,27 +304,27 @@ class MslqQuestionnaireSeeder extends Seeder
             ],
             [
                 'course_id' => null,
-                'title' => 'MSLQ - Escalas de Estrategias de Aprendizaje',
-                'description' => 'Cuestionario de Estrategias Motivadas para el Aprendizaje (MSLQ) - Sección de Estrategias de Aprendizaje. Desarrollado por Pintrich et al. (1991). Incluye 50 ítems que miden estrategias cognitivas (repetición, elaboración, organización, pensamiento crítico), metacognitivas (autorregulación) y de manejo de recursos (tiempo, esfuerzo, aprendizaje entre pares, búsqueda de ayuda).',
+                'title' => 'MSLQ - Learning Strategies Scales',
+                'description' => 'Motivated Strategies for Learning Questionnaire (MSLQ) - Learning Strategies Section. Developed by Pintrich et al. (1991). Includes 50 items measuring cognitive strategies (rehearsal, elaboration, organization, critical thinking), metacognitive strategies (self-regulation), and resource management strategies (time management, effort regulation, peer learning, help seeking).',
                 'questions' => $questions,
                 'config' => [
                     'version' => '1.0',
                     'source' => 'Pintrich, P. R., Smith, D. A., Garcia, T., & McKeachie, W. J. (1991)',
                     'scale_type' => 'likert_7',
                     'scale_anchors' => [
-                        'min' => 'No me describe en absoluto',
-                        'max' => 'Me describe totalmente',
+                        'min' => 'Not at all true of me',
+                        'max' => 'Completely true of me',
                     ],
                     'dimensions' => [
-                        'rehearsal' => ['items' => [39, 46, 59, 72], 'label' => 'Repetición/Ensayo'],
-                        'elaboration' => ['items' => [53, 62, 64, 67, 69, 81], 'label' => 'Elaboración'],
-                        'organization' => ['items' => [32, 42, 49, 63], 'label' => 'Organización'],
-                        'critical_thinking' => ['items' => [38, 47, 51, 66, 71], 'label' => 'Pensamiento Crítico'],
-                        'metacognitive_self_regulation' => ['items' => [33, 36, 41, 44, 54, 55, 56, 57, 61, 76, 78, 79], 'label' => 'Autorregulación Metacognitiva'],
-                        'time_management' => ['items' => [35, 43, 52, 65, 70, 73, 77, 80], 'label' => 'Administración del Tiempo'],
-                        'effort_regulation' => ['items' => [37, 48, 60, 74], 'label' => 'Regulación del Esfuerzo'],
-                        'peer_learning' => ['items' => [34, 45, 50], 'label' => 'Aprendizaje entre Pares'],
-                        'help_seeking' => ['items' => [40, 58, 68, 75], 'label' => 'Búsqueda de Ayuda'],
+                        'rehearsal' => ['items' => [39, 46, 59, 72], 'label' => 'Rehearsal'],
+                        'elaboration' => ['items' => [53, 62, 64, 67, 69, 81], 'label' => 'Elaboration'],
+                        'organization' => ['items' => [32, 42, 49, 63], 'label' => 'Organization'],
+                        'critical_thinking' => ['items' => [38, 47, 51, 66, 71], 'label' => 'Critical Thinking'],
+                        'metacognitive_self_regulation' => ['items' => [33, 36, 41, 44, 54, 55, 56, 57, 61, 76, 78, 79], 'label' => 'Metacognitive Self-Regulation'],
+                        'time_management' => ['items' => [35, 43, 52, 65, 70, 73, 77, 80], 'label' => 'Time Management'],
+                        'effort_regulation' => ['items' => [37, 48, 60, 74], 'label' => 'Effort Regulation'],
+                        'peer_learning' => ['items' => [34, 45, 50], 'label' => 'Peer Learning'],
+                        'help_seeking' => ['items' => [40, 58, 68, 75], 'label' => 'Help Seeking'],
                     ],
                 ],
                 'is_active' => false,

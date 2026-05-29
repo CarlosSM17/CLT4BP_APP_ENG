@@ -8,98 +8,98 @@ use Illuminate\Database\Seeder;
 class CourseInterestSurveySeeder extends Seeder
 {
     /**
-     * Opciones de escala Likert 1-5 para CIS
-     * Basado en Keller (2010) - Course Interest Survey
+     * Likert 1-5 scale options for CIS
+     * Based on Keller (2010) - Course Interest Survey
      */
     private const LIKERT_OPTIONS = [
-        ['value' => 1, 'label' => 'Totalmente en desacuerdo'],
-        ['value' => 2, 'label' => 'En desacuerdo'],
-        ['value' => 3, 'label' => 'Ni de acuerdo ni en desacuerdo'],
-        ['value' => 4, 'label' => 'De acuerdo'],
-        ['value' => 5, 'label' => 'Totalmente de acuerdo'],
+        ['value' => 1, 'label' => 'Strongly Disagree'],
+        ['value' => 2, 'label' => 'Disagree'],
+        ['value' => 3, 'label' => 'Neutral'],
+        ['value' => 4, 'label' => 'Agree'],
+        ['value' => 5, 'label' => 'Strongly Agree'],
     ];
 
     /**
-     * Items del CIS - 34 items
-     * Basado en Keller, J. M. (2010). Motivational Design for Learning and Performance.
-     * Dimensiones ARCS: Attention, Relevance, Confidence, Satisfaction
+     * CIS items - 34 items
+     * Based on Keller, J. M. (2010). Motivational Design for Learning and Performance.
+     * ARCS dimensions: Attention, Relevance, Confidence, Satisfaction
      */
     private const QUESTIONS = [
-        // Atención (8 items: 1, 4, 10, 15, 21, 24, 26, 29)
+        // Attention (8 items: 1, 4, 10, 15, 21, 24, 26, 29)
         ['id' => '1', 'item_number' => 1, 'dimension' => 'attention', 'reverse' => false,
-         'question' => 'El instructor sabe cómo hacer que nos interesemos en el contenido del curso.'],
+         'question' => 'The instructor knows how to make us feel enthusiastic about the subject matter of this course.'],
         ['id' => '4', 'item_number' => 4, 'dimension' => 'attention', 'reverse' => true,
-         'question' => 'Las clases de este curso son aburridas.'],
+         'question' => 'The classes in this course are boring.'],
         ['id' => '10', 'item_number' => 10, 'dimension' => 'attention', 'reverse' => false,
-         'question' => 'El instructor utiliza una variedad interesante de técnicas de enseñanza.'],
+         'question' => 'The instructor uses an interesting variety of teaching techniques.'],
         ['id' => '15', 'item_number' => 15, 'dimension' => 'attention', 'reverse' => true,
-         'question' => 'Los materiales de instrucción de este curso son aburridos.'],
+         'question' => 'The instructional materials for this course are boring.'],
         ['id' => '21', 'item_number' => 21, 'dimension' => 'attention', 'reverse' => false,
-         'question' => 'La variedad de tareas, ejercicios, ejemplos, etc., ayudó a mantener mi atención en el curso.'],
+         'question' => 'The variety of activities, assignments, examples, etc., helped keep my attention on the course.'],
         ['id' => '24', 'item_number' => 24, 'dimension' => 'attention', 'reverse' => false,
-         'question' => 'Mi curiosidad fue frecuentemente estimulada por las preguntas planteadas y los problemas dados en este curso.'],
+         'question' => 'My curiosity was often stimulated by the questions asked and the problems given in this course.'],
         ['id' => '26', 'item_number' => 26, 'dimension' => 'attention', 'reverse' => true,
-         'question' => 'A menudo soñaba despierto(a) durante las clases de este curso.'],
+         'question' => 'I often daydreamed during the classes in this course.'],
         ['id' => '29', 'item_number' => 29, 'dimension' => 'attention', 'reverse' => false,
-         'question' => 'La forma en que se presenta la información me ayudó a mantener la atención.'],
+         'question' => 'The way the information is presented helped me stay attentive.'],
 
-        // Relevancia (9 items: 2, 5, 8, 13, 20, 22, 23, 25, 28)
+        // Relevance (9 items: 2, 5, 8, 13, 20, 22, 23, 25, 28)
         ['id' => '2', 'item_number' => 2, 'dimension' => 'relevance', 'reverse' => false,
-         'question' => 'Las cosas que estoy aprendiendo en este curso serán útiles para mí.'],
+         'question' => 'The things I am learning in this course will be useful to me.'],
         ['id' => '5', 'item_number' => 5, 'dimension' => 'relevance', 'reverse' => false,
-         'question' => 'El instructor hace que el contenido del curso parezca importante.'],
+         'question' => 'The instructor makes the course content seem important.'],
         ['id' => '8', 'item_number' => 8, 'dimension' => 'relevance', 'reverse' => true,
-         'question' => 'No puedo ver cómo el contenido de este curso se relaciona con algo que ya conozco.'],
+         'question' => 'I cannot see how the content of this course is related to anything I already know.'],
         ['id' => '13', 'item_number' => 13, 'dimension' => 'relevance', 'reverse' => false,
-         'question' => 'En este curso, trato de establecer conexiones entre el contenido y mis metas personales.'],
+         'question' => 'In this course, I try to relate the content to my personal goals.'],
         ['id' => '20', 'item_number' => 20, 'dimension' => 'relevance', 'reverse' => false,
-         'question' => 'El contenido de este curso se relaciona con mis expectativas y metas.'],
+         'question' => 'The content of this course relates to my expectations and goals.'],
         ['id' => '22', 'item_number' => 22, 'dimension' => 'relevance', 'reverse' => false,
-         'question' => 'El contenido de este curso será útil para mí.'],
+         'question' => 'The content of this course will be useful to me.'],
         ['id' => '23', 'item_number' => 23, 'dimension' => 'relevance', 'reverse' => false,
-         'question' => 'Puedo relacionar el contenido de este curso con cosas que he visto, hecho o pensado en mi vida cotidiana.'],
+         'question' => 'I can relate the content of this course to things I have seen, done, or thought about in my life.'],
         ['id' => '25', 'item_number' => 25, 'dimension' => 'relevance', 'reverse' => true,
-         'question' => 'El contenido de este curso no será útil para mí.'],
+         'question' => 'The content of this course will not be useful to me.'],
         ['id' => '28', 'item_number' => 28, 'dimension' => 'relevance', 'reverse' => false,
-         'question' => 'El valor personal de este contenido hace que quiera seguir aprendiendo sobre él.'],
+         'question' => 'The personal value of this content makes me want to continue learning about it.'],
 
-        // Confianza (8 items: 3, 6, 9, 11, 17, 27, 30, 34)
+        // Confidence (8 items: 3, 6, 9, 11, 17, 27, 30, 34)
         ['id' => '3', 'item_number' => 3, 'dimension' => 'confidence', 'reverse' => false,
-         'question' => 'Siento confianza en que me irá bien en este curso.'],
+         'question' => 'I feel confident that I will do well in this course.'],
         ['id' => '6', 'item_number' => 6, 'dimension' => 'confidence', 'reverse' => true,
-         'question' => 'Es difícil predecir qué calificación me dará el instructor en este curso.'],
+         'question' => 'It is difficult to predict what kind of grade the instructor will give my assignments in this course.'],
         ['id' => '9', 'item_number' => 9, 'dimension' => 'confidence', 'reverse' => true,
-         'question' => 'Tanto si estudio mucho como si estudio poco para este curso, no me hace ninguna diferencia.'],
+         'question' => 'Whether I study or not doesn\'t make any difference in this course.'],
         ['id' => '11', 'item_number' => 11, 'dimension' => 'confidence', 'reverse' => false,
-         'question' => 'Puedo entender bien los materiales de este curso.'],
+         'question' => 'I can adequately understand the materials in this course.'],
         ['id' => '17', 'item_number' => 17, 'dimension' => 'confidence', 'reverse' => false,
-         'question' => 'Fue fácil para mí entender las tareas de este curso.'],
+         'question' => 'It was easy for me to understand what was expected of me in this course.'],
         ['id' => '27', 'item_number' => 27, 'dimension' => 'confidence', 'reverse' => true,
-         'question' => 'No puedo entender realmente buena parte del material de este curso.'],
+         'question' => 'I really cannot understand a good portion of the course material.'],
         ['id' => '30', 'item_number' => 30, 'dimension' => 'confidence', 'reverse' => false,
-         'question' => 'La cantidad de trabajo que tengo que hacer es apropiada para este tipo de curso.'],
+         'question' => 'The amount of work I have to do is appropriate for this type of course.'],
         ['id' => '34', 'item_number' => 34, 'dimension' => 'confidence', 'reverse' => false,
-         'question' => 'Después de trabajar en las actividades, sentí confianza en que podía pasar las evaluaciones sobre el contenido.'],
+         'question' => 'After working on the course activities, I felt confident that I could pass the content evaluations.'],
 
-        // Satisfacción (9 items: 7, 12, 14, 16, 18, 19, 31, 32, 33)
+        // Satisfaction (9 items: 7, 12, 14, 16, 18, 19, 31, 32, 33)
         ['id' => '7', 'item_number' => 7, 'dimension' => 'satisfaction', 'reverse' => false,
-         'question' => 'El instructor hace que la materia de este curso sea agradable.'],
+         'question' => 'The instructor makes the subject matter of this course enjoyable.'],
         ['id' => '12', 'item_number' => 12, 'dimension' => 'satisfaction', 'reverse' => false,
-         'question' => 'Me sentí bien al completar exitosamente este curso.'],
+         'question' => 'I felt good about successfully completing this course.'],
         ['id' => '14', 'item_number' => 14, 'dimension' => 'satisfaction', 'reverse' => false,
-         'question' => 'Me disfruté tanto este curso que me gustaría saber más sobre este tema.'],
+         'question' => 'I enjoyed this course so much that I would like to know more about this subject.'],
         ['id' => '16', 'item_number' => 16, 'dimension' => 'satisfaction', 'reverse' => false,
-         'question' => 'Disfruté este curso tanto que desearía que más cursos fueran conducidos de la misma manera.'],
+         'question' => 'I enjoyed this course so much that I would like other courses to be taught in a similar way.'],
         ['id' => '18', 'item_number' => 18, 'dimension' => 'satisfaction', 'reverse' => true,
-         'question' => 'No me gustó este curso y no quisiera tomarlo de nuevo.'],
+         'question' => 'I did not like this course and do not want to take it again.'],
         ['id' => '19', 'item_number' => 19, 'dimension' => 'satisfaction', 'reverse' => false,
-         'question' => 'Sentí satisfacción cuando sabía que estaba aprendiendo.'],
+         'question' => 'I felt a sense of satisfaction when I was learning.'],
         ['id' => '31', 'item_number' => 31, 'dimension' => 'satisfaction', 'reverse' => false,
-         'question' => 'Me sentí bien al completar las tareas de este curso.'],
+         'question' => 'I felt good about completing the assignments in this course.'],
         ['id' => '32', 'item_number' => 32, 'dimension' => 'satisfaction', 'reverse' => true,
-         'question' => 'Fue un desperdicio de tiempo tomar este curso.'],
+         'question' => 'It was a waste of time taking this course.'],
         ['id' => '33', 'item_number' => 33, 'dimension' => 'satisfaction', 'reverse' => false,
-         'question' => 'El instructor se mostró interesado en que los estudiantes aprendieran en este curso.'],
+         'question' => 'The instructor was interested in having students learn in this course.'],
     ];
 
     public function run(): void
@@ -128,23 +128,23 @@ class CourseInterestSurveySeeder extends Seeder
             ],
             [
                 'course_id' => null,
-                'title' => 'Encuesta de Interés en el Curso (CIS)',
-                'description' => 'Encuesta de Interés en el Curso basada en el modelo ARCS de Keller (2010). Mide cuatro dimensiones motivacionales: Atención, Relevancia, Confianza y Satisfacción. 34 ítems en escala Likert de 1 a 5.',
+                'title' => 'Course Interest Survey (CIS)',
+                'description' => 'Course Interest Survey based on Keller\'s ARCS model (2010). Measures four motivational dimensions: Attention, Relevance, Confidence, and Satisfaction. 34 items on a Likert scale from 1 to 5.',
                 'questions' => $questions,
                 'config' => [
                     'version' => '1.0',
                     'source' => 'Keller, J. M. (2010). Motivational Design for Learning and Performance: The ARCS Model Approach.',
                     'scale_type' => 'likert_5',
                     'scale_anchors' => [
-                        'min' => 'Totalmente en desacuerdo (1)',
-                        'max' => 'Totalmente de acuerdo (5)',
+                        'min' => 'Strongly Disagree (1)',
+                        'max' => 'Strongly Agree (5)',
                     ],
                     'reverse_items' => $reverseItems,
                     'dimensions' => [
-                        'attention' => ['items' => [1, 4, 10, 15, 21, 24, 26, 29], 'label' => 'Atención'],
-                        'relevance' => ['items' => [2, 5, 8, 13, 20, 22, 23, 25, 28], 'label' => 'Relevancia'],
-                        'confidence' => ['items' => [3, 6, 9, 11, 17, 27, 30, 34], 'label' => 'Confianza'],
-                        'satisfaction' => ['items' => [7, 12, 14, 16, 18, 19, 31, 32, 33], 'label' => 'Satisfacción'],
+                        'attention' => ['items' => [1, 4, 10, 15, 21, 24, 26, 29], 'label' => 'Attention'],
+                        'relevance' => ['items' => [2, 5, 8, 13, 20, 22, 23, 25, 28], 'label' => 'Relevance'],
+                        'confidence' => ['items' => [3, 6, 9, 11, 17, 27, 30, 34], 'label' => 'Confidence'],
+                        'satisfaction' => ['items' => [7, 12, 14, 16, 18, 19, 31, 32, 33], 'label' => 'Satisfaction'],
                     ],
                 ],
                 'is_active' => false,
@@ -154,6 +154,6 @@ class CourseInterestSurveySeeder extends Seeder
             ]
         );
 
-        $this->command->info('Plantilla CIS (Course Interest Survey) creada (34 items)');
+        $this->command->info('CIS (Course Interest Survey) template created (34 items)');
     }
 }

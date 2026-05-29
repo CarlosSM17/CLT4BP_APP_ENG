@@ -16,28 +16,28 @@ class RecallFinalSeeder extends Seeder
             ],
             [
                 'course_id' => null,
-                'title' => 'Test de Recuerdo Final (Post-test)',
-                'description' => 'Plantilla para test de recuerdo final. El instructor debe personalizar las preguntas según el contenido específico de su curso. Evalúa la retención de conceptos clave al finalizar el curso. Permite comparación con el test de recuerdo inicial.',
+                'title' => 'Final Recall Test (Post-test)',
+                'description' => 'Template for the final recall test. The instructor should customize the questions according to the specific content of their course. Assesses retention of key concepts at the end of the course. Allows comparison with the initial recall test.',
                 'questions' => [
                     [
                         'id' => '1',
                         'type' => 'multiple_choice',
-                        'question' => '[Pregunta de ejemplo - Personalice] ¿Cuál es la definición correcta del concepto X?',
+                        'question' => '[Example question - Customize] What is the correct definition of concept X?',
                         'options' => [
-                            'Opción correcta (modifique según su curso)',
-                            'Distractor 1 (modifique según su curso)',
-                            'Distractor 2 (modifique según su curso)',
-                            'Distractor 3 (modifique según su curso)',
+                            'Correct answer (modify for your course)',
+                            'Distractor 1 (modify for your course)',
+                            'Distractor 2 (modify for your course)',
+                            'Distractor 3 (modify for your course)',
                         ],
                         'correct_answer' => 0,
                     ],
                     [
                         'id' => '2',
                         'type' => 'multiple_choice',
-                        'question' => '[Pregunta de ejemplo - Personalice] ¿Qué concepto describe mejor el proceso Y?',
+                        'question' => '[Example question - Customize] Which concept best describes process Y?',
                         'options' => [
                             'Distractor 1',
-                            'Respuesta correcta (modifique)',
+                            'Correct answer (modify)',
                             'Distractor 2',
                             'Distractor 3',
                         ],
@@ -46,11 +46,11 @@ class RecallFinalSeeder extends Seeder
                     [
                         'id' => '3',
                         'type' => 'multiple_choice',
-                        'question' => '[Pregunta de ejemplo - Personalice] ¿Cuáles son los componentes principales de Z?',
+                        'question' => '[Example question - Customize] What are the main components of Z?',
                         'options' => [
                             'Distractor 1',
                             'Distractor 2',
-                            'Respuesta correcta (modifique)',
+                            'Correct answer (modify)',
                             'Distractor 3',
                         ],
                         'correct_answer' => 2,
@@ -58,21 +58,21 @@ class RecallFinalSeeder extends Seeder
                     [
                         'id' => '4',
                         'type' => 'multiple_choice',
-                        'question' => '[Pregunta de ejemplo - Personalice] ¿En qué consiste el método W?',
+                        'question' => '[Example question - Customize] What does method W consist of?',
                         'options' => [
                             'Distractor 1',
                             'Distractor 2',
                             'Distractor 3',
-                            'Respuesta correcta (modifique)',
+                            'Correct answer (modify)',
                         ],
                         'correct_answer' => 3,
                     ],
                     [
                         'id' => '5',
                         'type' => 'multiple_choice',
-                        'question' => '[Pregunta de ejemplo - Personalice] ¿Cuál de las siguientes afirmaciones es correcta sobre V?',
+                        'question' => '[Example question - Customize] Which of the following statements is correct about V?',
                         'options' => [
-                            'Respuesta correcta (modifique)',
+                            'Correct answer (modify)',
                             'Distractor 1',
                             'Distractor 2',
                             'Distractor 3',
@@ -84,7 +84,7 @@ class RecallFinalSeeder extends Seeder
                     'version' => '1.0',
                     'is_post_test' => true,
                     'pre_test_type' => 'recall_initial',
-                    'instructions' => 'El instructor debe reemplazar las preguntas de ejemplo con preguntas específicas de su curso que evalúen la retención de conceptos clave.',
+                    'instructions' => 'The instructor should replace the example questions with course-specific questions that assess retention of key concepts.',
                 ],
                 'is_active' => false,
                 'is_template' => true,
@@ -93,6 +93,6 @@ class RecallFinalSeeder extends Seeder
             ]
         );
 
-        $this->command->info('Plantilla de Test de Recuerdo Final creada (5 preguntas ejemplo)');
+        $this->command->info('Final Recall Test template created (5 example questions)');
     }
 }

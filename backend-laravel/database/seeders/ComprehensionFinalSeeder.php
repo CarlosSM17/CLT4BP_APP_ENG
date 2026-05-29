@@ -16,28 +16,28 @@ class ComprehensionFinalSeeder extends Seeder
             ],
             [
                 'course_id' => null,
-                'title' => 'Test de Comprensión Final (Post-test)',
-                'description' => 'Plantilla para test de comprensión final. El instructor debe personalizar las preguntas según el contenido de su curso. Evalúa la comprensión profunda (aplicación, análisis) al finalizar el curso. Incluye preguntas de opción múltiple y preguntas abiertas. Permite comparación con el test de comprensión inicial.',
+                'title' => 'Final Comprehension Test (Post-test)',
+                'description' => 'Template for the final comprehension test. The instructor should customize the questions according to the course content. Assesses deep understanding (application, analysis) at the end of the course. Includes multiple-choice and open-ended questions. Allows comparison with the initial comprehension test.',
                 'questions' => [
                     [
                         'id' => '1',
                         'type' => 'multiple_choice',
-                        'question' => '[Personalice] Dado el siguiente escenario, ¿cuál sería la mejor solución aplicando el concepto X?',
+                        'question' => '[Customize] Given the following scenario, what would be the best solution applying concept X?',
                         'options' => [
-                            'Respuesta correcta (modifique según su curso)',
-                            'Distractor plausible 1',
-                            'Distractor plausible 2',
-                            'Distractor plausible 3',
+                            'Correct answer (modify for your course)',
+                            'Plausible distractor 1',
+                            'Plausible distractor 2',
+                            'Plausible distractor 3',
                         ],
                         'correct_answer' => 0,
                     ],
                     [
                         'id' => '2',
                         'type' => 'multiple_choice',
-                        'question' => '[Personalice] ¿Qué resultado se obtendría al aplicar el procedimiento Y en la situación descrita?',
+                        'question' => '[Customize] What result would be obtained by applying procedure Y in the described situation?',
                         'options' => [
                             'Distractor 1',
-                            'Respuesta correcta (modifique)',
+                            'Correct answer (modify)',
                             'Distractor 2',
                             'Distractor 3',
                         ],
@@ -46,11 +46,11 @@ class ComprehensionFinalSeeder extends Seeder
                     [
                         'id' => '3',
                         'type' => 'multiple_choice',
-                        'question' => '[Personalice] ¿Cuál es la principal diferencia entre el enfoque A y el enfoque B para resolver el problema Z?',
+                        'question' => '[Customize] What is the main difference between approach A and approach B for solving problem Z?',
                         'options' => [
                             'Distractor 1',
                             'Distractor 2',
-                            'Respuesta correcta (modifique)',
+                            'Correct answer (modify)',
                             'Distractor 3',
                         ],
                         'correct_answer' => 2,
@@ -58,13 +58,13 @@ class ComprehensionFinalSeeder extends Seeder
                     [
                         'id' => '4',
                         'type' => 'text',
-                        'question' => '[Personalice] Explique con sus propias palabras cómo se aplica el concepto X para resolver un problema del tipo Y. Proporcione un ejemplo concreto.',
+                        'question' => '[Customize] Explain in your own words how concept X is applied to solve a problem of type Y. Provide a concrete example.',
                         'options' => [],
                     ],
                     [
                         'id' => '5',
                         'type' => 'text',
-                        'question' => '[Personalice] Analice las ventajas y desventajas de utilizar el método W en comparación con el método V. ¿En qué situaciones recomendaría cada uno?',
+                        'question' => '[Customize] Analyze the advantages and disadvantages of using method W compared to method V. In what situations would you recommend each?',
                         'options' => [],
                     ],
                 ],
@@ -72,7 +72,7 @@ class ComprehensionFinalSeeder extends Seeder
                     'version' => '1.0',
                     'is_post_test' => true,
                     'pre_test_type' => 'comprehension_initial',
-                    'instructions' => 'El instructor debe reemplazar las preguntas de ejemplo con preguntas de comprensión específicas de su curso. Se recomienda mantener una mezcla de preguntas de opción múltiple (aplicación) y preguntas abiertas (análisis y síntesis).',
+                    'instructions' => 'The instructor should replace the example questions with course-specific comprehension questions. It is recommended to maintain a mix of multiple-choice questions (application) and open-ended questions (analysis and synthesis).',
                 ],
                 'is_active' => false,
                 'is_template' => true,
@@ -81,6 +81,6 @@ class ComprehensionFinalSeeder extends Seeder
             ]
         );
 
-        $this->command->info('Plantilla de Test de Comprensión Final creada (5 preguntas ejemplo)');
+        $this->command->info('Final Comprehension Test template created (5 example questions)');
     }
 }

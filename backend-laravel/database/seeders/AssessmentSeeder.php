@@ -10,37 +10,37 @@ class AssessmentSeeder extends Seeder
 {
     public function run(): void
     {
-        // Obtener el primer curso para ejemplos
+        // Get the first course for examples
         $course = Course::first();
 
         if (!$course) {
-            $this->command->info('No hay cursos disponibles. Ejecuta CourseSeeder primero.');
+            $this->command->info('No courses available. Run CourseSeeder first.');
             return;
         }
 
-        // Evaluación Recall Inicial
+        // Initial Recall Assessment
         Assessment::create([
             'course_id' => $course->id,
             'assessment_type' => 'recall_initial',
-            'title' => 'Evaluación de Conocimientos Previos',
-            'description' => 'Evalúa tus conocimientos antes de comenzar el curso',
+            'title' => 'Prior Knowledge Assessment',
+            'description' => 'Assess your knowledge before starting the course',
             'questions' => [
                 [
                     'id' => '1',
                     'type' => 'multiple_choice',
-                    'question' => '¿Qué es un algoritmo?',
+                    'question' => 'What is an algorithm?',
                     'options' => [
-                        'Una secuencia de instrucciones para resolver un problema',
-                        'Un tipo de dato en programación',
-                        'Un lenguaje de programación',
-                        'Una herramienta de depuración'
+                        'A sequence of instructions to solve a problem',
+                        'A data type in programming',
+                        'A programming language',
+                        'A debugging tool'
                     ],
                     'correct_answer' => 0
                 ],
                 [
                     'id' => '2',
                     'type' => 'multiple_choice',
-                    'question' => '¿Cuál de estos NO es un tipo de dato primitivo?',
+                    'question' => 'Which of these is NOT a primitive data type?',
                     'options' => [
                         'Integer',
                         'String',
@@ -52,7 +52,7 @@ class AssessmentSeeder extends Seeder
                 [
                     'id' => '3',
                     'type' => 'text',
-                    'question' => 'Describe con tus propias palabras qué es una variable en programación.',
+                    'question' => 'Describe in your own words what a variable is in programming.',
                     'options' => []
                 ]
             ],
@@ -60,41 +60,41 @@ class AssessmentSeeder extends Seeder
             'time_limit' => 15,
         ]);
 
-        // Evaluación MSLQ Motivación Inicial
+        // Initial MSLQ Motivation Assessment
         Assessment::create([
             'course_id' => $course->id,
             'assessment_type' => 'mslq_motivation_initial',
-            'title' => 'Cuestionario de Motivación MSLQ',
-            'description' => 'Evalúa tu motivación y actitud hacia el aprendizaje',
+            'title' => 'MSLQ Motivation Questionnaire',
+            'description' => 'Assess your motivation and attitude toward learning',
             'questions' => [
                 [
                     'id' => '1',
                     'type' => 'likert',
-                    'question' => 'Estoy muy interesado en el contenido de este curso.',
+                    'question' => 'I am very interested in the content of this course.',
                     'options' => []
                 ],
                 [
                     'id' => '2',
                     'type' => 'likert',
-                    'question' => 'Creo que puedo entender incluso los conceptos más difíciles presentados en este curso.',
+                    'question' => 'I believe I can understand even the most difficult concepts presented in this course.',
                     'options' => []
                 ],
                 [
                     'id' => '3',
                     'type' => 'likert',
-                    'question' => 'Espero tener un buen desempeño en este curso.',
+                    'question' => 'I expect to do well in this course.',
                     'options' => []
                 ],
                 [
                     'id' => '4',
                     'type' => 'likert',
-                    'question' => 'Pienso que este curso es útil para mi aprendizaje.',
+                    'question' => 'I think this course is useful for my learning.',
                     'options' => []
                 ],
                 [
                     'id' => '5',
                     'type' => 'likert',
-                    'question' => 'Me gusta el tema que se aborda en este curso.',
+                    'question' => 'I like the subject matter of this course.',
                     'options' => []
                 ]
             ],
@@ -102,35 +102,35 @@ class AssessmentSeeder extends Seeder
             'time_limit' => 10,
         ]);
 
-        // Evaluación de Carga Cognitiva
+        // Cognitive Load Assessment
         Assessment::create([
             'course_id' => $course->id,
             'assessment_type' => 'cognitive_load',
-            'title' => 'Evaluación de Carga Cognitiva',
-            'description' => 'Evalúa el esfuerzo mental durante el aprendizaje',
+            'title' => 'Cognitive Load Assessment',
+            'description' => 'Assess the mental effort during learning',
             'questions' => [
                 [
                     'id' => '1',
                     'type' => 'scale',
-                    'question' => '¿Qué tan difícil te resultó el contenido de esta lección? (1=Muy fácil, 5=Muy difícil)',
+                    'question' => 'How difficult did you find the content of this lesson? (1=Very easy, 5=Very difficult)',
                     'options' => []
                 ],
                 [
                     'id' => '2',
                     'type' => 'scale',
-                    'question' => '¿Cuánto esfuerzo mental invertiste? (1=Muy poco, 5=Mucho)',
+                    'question' => 'How much mental effort did you invest? (1=Very little, 5=A lot)',
                     'options' => []
                 ],
                 [
                     'id' => '3',
                     'type' => 'scale',
-                    'question' => '¿Qué tan confuso te pareció el material? (1=Nada confuso, 5=Muy confuso)',
+                    'question' => 'How confusing did you find the material? (1=Not confusing at all, 5=Very confusing)',
                     'options' => []
                 ],
                 [
                     'id' => '4',
                     'type' => 'text',
-                    'question' => '¿Qué parte del contenido te resultó más desafiante?',
+                    'question' => 'Which part of the content did you find most challenging?',
                     'options' => []
                 ]
             ],
@@ -138,6 +138,6 @@ class AssessmentSeeder extends Seeder
             'time_limit' => 5,
         ]);
 
-        $this->command->info('Evaluaciones de ejemplo creadas exitosamente.');
+        $this->command->info('Example assessments created successfully.');
     }
 }
